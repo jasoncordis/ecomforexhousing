@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{% endblock %}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><span class="navbar-toggler-icon"></span></a>
+    </div>
+  </nav>
+
+  <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <section class="section">
+    <div class="container my-5">
+
+      <!-- Spacer -->
+      <div class="col-xs-12" style="height:50px;"></div>
+
+      <!-- Search bar -->
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+
+      <!-- Spacer -->
+      <div class="col-xs-12" style="height:50px;"></div>
+
+      <br />
+
+    </div>
+  </section>
+
+</body>
+</html>
