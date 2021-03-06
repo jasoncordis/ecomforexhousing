@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang = "en">
+<script type="text/javascript" src="../js/registration.js"></script> 
+<head>
+    <link rel="stylesheet" type="text/css" href="../css/registration.css">
+    <meta charset="utf-8">
+    <title>Registration</title>
+</head>
+  <body>
+    <header>
+        <h1>Registration</h1>
+    </header>
+    <form name = "login">
+        <fieldset>
+            <legend>Registration</legend>
+            <label for = "username"></label>
+            Username
+            <input type="text" name ="username"/>
+            <br/>
+            Email
+            <label for = "email"></label>
+            <input type="email" name ="email"/>
+            <br/>
+            <label for = "password"></label>
+            Password
+            <input type="password" name ="password"/>
+            <br/>
+            <label for = "confirmPassword"></label>
+            Confirm Password
+            <input type="password" name ="confirmPassword"/>
+            <br/>
+            I am 13+ years of age <input type="checkbox" name="agereq" value="accept" required = "required"> 
+            <br/>
+            I accept the <a href="#">TOS and Privacy Rules</a> <input type="checkbox" name="tosaccept" value="accept" required = "required"> 
+        </fieldset> 
+        <button onclick="validateForm(document.login.username, document.login.password, document.login.confirmPassword)">Submit</button>
+    </form>
+    <p id="Submitted"></p>
+    </body>
+</html>
