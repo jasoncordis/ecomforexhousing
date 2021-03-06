@@ -1,7 +1,7 @@
 {
-  "name": "appengine-hello-world",
-  "description": "Simple Hello World Node.js sample for Google App Engine Standard Environment.",
-  "version": "0.0.2",
+  "name": "appengine-cloudsql-postgres",
+  "description": "Node.js PostgreSQL sample for Cloud SQL on App Engine.",
+  "version": "0.0.1",
   "private": true,
   "license": "Apache-2.0",
   "author": "Google Inc.",
@@ -10,17 +10,24 @@
     "url": "https://github.com/GoogleCloudPlatform/nodejs-docs-samples.git"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=10.0.0"
   },
   "scripts": {
-    "start": "node app.js",
-    "test": "mocha --exit test/*.test.js"
+    "start-proxy": "! pgrep cloud_sql_proxy > /dev/null && cloud_sql_proxy -dir=/cloudsql -instances=$CLOUD_SQL_CONNECTION_NAME &",
+    "test": "mocha test/*.test.js --timeout=60000 --exit"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "@google-cloud/logging-winston": "^4.0.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.2",
+    "knex": "^0.95.0",
+    "pg": "^8.0.0",
+    "pug": "^3.0.0",
+    "winston": "^3.1.0",
+    "yargs": "^16.0.0"
   },
   "devDependencies": {
-    "mocha": "^8.1.3",
+    "mocha": "^8.0.0",
     "supertest": "^6.0.0"
   }
 }

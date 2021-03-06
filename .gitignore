@@ -1,0 +1,17 @@
+**/node_modules/**
+npm-debug.log
+coverage/
+
+dump.rdb
+logs/
+*.iml
+*.pb
+.idea/
+.nyc_output
+yarn.lock
+package-lock.json
+.envrc
+cloud_sql_proxy
+
+ecomforexhousing-0d427028bcd6.json
+export_env_vars.sh
