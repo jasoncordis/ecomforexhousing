@@ -1,0 +1,61 @@
+body {
+    background-color:black;
+    font-family: Arial, Helvetica;
+    font-size: 35px;
+  }
+  
+  h1 {
+    color: DarkGreen;
+    text-shadow: 5px 5px 5px lightgreen;
+    text-align: center;
+    font-family: Stencil Std, Arial Black;
+    border: 10px solid lightgreen;
+    width: 600px;
+    height: 100px;
+    margin: auto;
+    background-color:PaleGoldenRod;
+  }
+
+  form{
+    border: 10px solid white;
+    font-family: Calibri, Arial;
+    color: black;
+    font-size: 30px;
+    text-align: center;    
+    border-radius: 25px;
+    background-color:springgreen;
+  }
+
+  input[type=text]{
+    background-color: yellow;  
+    border-radius: 25px;
+
+  }  
+  input[type=password]{
+    background-color: yellow; 
+    border-radius: 25px; 
+  }
+  
+  input[type=email]{
+    background-color: yellow; 
+    border-radius: 25px; 
+  }
+
+   input[type=Submit]{
+    font-family: Arial Black, Helvetica, sans-serif;
+    color: white;
+    background-color: brown;   
+    margin: 18px;
+    padding: 16px 32px;
+    font-size:20px;
+    text-align: center;
+}   
+  input[type=Submit]:hover{
+    font-family: Arial Black, Helvetica, sans-serif;
+    color: white;
+    background-color: black;   
+    margin: 18px;
+    padding: 16px 32px;
+    font-size:20px;
+    text-align: center;
+  }
