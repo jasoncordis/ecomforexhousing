@@ -2,7 +2,7 @@
 <html lang = "en">
 <script type="text/javascript" src="../js/registration.js"></script> 
 <head>
-    <link rel="stylesheet" type="text/css" href="../css/registration.css">
+    <link rel="stylesheet" type="text/css" href="home.css">
     <meta charset="utf-8">
     <title>Let's Finish Your Profile!</title>
 </head>
@@ -17,6 +17,9 @@
             Name
             <input type="text" name ="name"/>
             <br/>
+            Phone
+            <label for = "phone">Phone </label>
+            <input type="tel" id="phone" name="phone" required><br><br>
             Email
             <label for = "email"></label>
             <input type="email" name ="email"/>
@@ -33,8 +36,7 @@
             <br/>
             I accept the <a href="#">TOS and Privacy Rules</a> <input type="checkbox" name="tosaccept" value="accept" required = "required"> 
         </fieldset> 
-        <button onclick="validateForm(document.login.username, document.login.password, document.login.confirmPassword)">Submit</button>
+        <input type = "submit">
     </form>
-    <p id="Submitted"></p>
     </body>
 </html>
