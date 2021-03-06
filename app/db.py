@@ -1,4 +1,3 @@
-import mariadb
 import os
 import psycopg2
 import subprocess
