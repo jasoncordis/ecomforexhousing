@@ -7,15 +7,15 @@
   </head>
   <body>
     <section>
-      <h1>{{context.heading}}</h1>
-      <p>{{context.data}}</p>
+      <h1></h1>
+      <p></p>
     </section>
     <section>
       <div>
-        Allen J Huang
-      </div>
-      <div>
-        Last modified 1/6/21
+        Hello World!
+        {% for row in data %}
+          {{ row }}
+        {% endfor %}
       </div>
     </section>
   </body>

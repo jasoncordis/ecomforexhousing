@@ -1,20 +1,32 @@
 from flask import render_template
 from app import app
-from app import db
+import app.config.db as db_config
+import psycopg2
 
 
 @app.route('/')
 @app.route('/index')
 def index():
-    heroku_db = db.HerokuPg('ecomforexhousing')
+    conn = psycopg2.connect(
+            dbname=db_config.dbname,
+            user=db_config.user,
+            password=db_config.password,
+            host=db_config.host,
+            port=db_config.port,
+        )
+    cursor = conn.cursor()
 
     query = '''
     SELECT * FROM Listings;
     '''
-    heroku_db.execute_query(query)
+    cursor.execute(query)
+    conn.commit()
+    data = cursor.fetchall()
 
-    context = {
-        'heading': 'Postgres results:',
-        'data': heroku_db.fetch_results()
-    }
-    return render_template('index.htm', context=context)
+    print(data)
+
+    # conn.close()
+
+    # data = []
+
+    return render_template('index.htm', data=data)
