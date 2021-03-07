@@ -1,16 +1,18 @@
 google.maps.event.addDomListener(window, 'load', initPlacesAutoComplete);
+let coordinates;
 
 function initPlacesAutoComplete() {
-  console.log('hey');
   var input = document.getElementById('locationTextField');
   var autocomplete = new google.maps.places.Autocomplete(input);
 
   google.maps.event.addListener(autocomplete, 'place_changed', function() {
-    console.log('hey');
     var place = autocomplete.getPlace();
-    console.log(place);
-    document.getElementById("lat").innerHTML = place.geometry.location.lat();
-    document.getElementById("lng").innerHTML = place.geometry.location.lng();
+    coordinates = {
+      lat: place.geometry.location.lat(),
+      lng: place.geometry.location.lng(),
+    };
+    console.log(coordinates);
+    console.log(typeof(coordinates.lat) + '\n' + typeof(coordinates.lng));
   });
 }
 
@@ -51,11 +53,8 @@ function finishStep4() {
       document.querySelector('#progressbartext').textContent = "you made it!";
       window.setTimeout(
         function () {
-          let chosenLocation = document.querySelect('#locationTextField');
-          let test = "https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY"
-
           // Go to main.
-          window.location.href = `/main?location=${chosenLocation}`;
+          window.location.href = `/main?lat=${coordinates.lat}&lng=${coordinates.lng}`;
         },
         2000
       );
