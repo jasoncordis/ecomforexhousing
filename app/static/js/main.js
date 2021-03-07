@@ -35,6 +35,12 @@ function aboutPage() {
   showElement('about-section');
 }
 
+function focusMain() {
+  hideElement('about-section');
+  showElement('main');
+}
+
+
 function updateModal(title, primary, image1, image2, image3, image4)
 {
   document.querySelector('#modal-card-title').textContent = title;

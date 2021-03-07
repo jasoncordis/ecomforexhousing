@@ -12,12 +12,12 @@
 {% block navbar %}
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <a class="navbar-item" href="{{ url_for('main') }}">
+      <a id="navbar-logo-link" class="navbar-item" href="#" onclick="focusMain()">
         <figure class="image">
           <img src="{{ url_for('static', filename='img/logo.png') }}">
         </figure>
       </a>
-      <a class="navbar-item" href="{{ url_for('main') }}">
+      <a id="navbar-brand-name-link" class="navbar-item" href="#" onclick="focusMain()">
         <span class="is-size-5">E-HAUS FINDER</span>
       </a>
 

@@ -37,29 +37,6 @@ function toggleIsActive(htmlNodeElement) {
 }
 
 /**
- * Submits the input values to the specified route.
- * @param {string} route
- */
-function saveChanges(route, id=null) {
-  // Create JSON to send to web server.
-  modalInputs = getModalInputs();
-  let payload = {}
-
-  // Adds a new key for the payload that holds the id's integer
-  if (id != null) {
-    for (let i = 0; i < id.length; i++) {
-      payload[id[i][0]] = id[i][1]
-    }
-  }
-
-  // Iterate through the inputs and assign the values to a payload['column_name_of_the_HTML_table']
-  for (let i = 0; i < modalInputs.length; i++) {
-    payload[modalInputs[i].id] = modalInputs[i].value;
-  }
-  submitForm(route, payload);
-}
-
-/**
  * Submits the input to the specified route.
  * @param {string} path Basically the route.
  * @param {object} params
