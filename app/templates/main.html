@@ -131,7 +131,9 @@
             <section class="hero">
               <div class="hero-body">
                 <figure class="image is-64x64">
-                  <img src="{{ url_for('static', filename='img/previous_icon.png') }}" />
+                  <a href="#">
+                    <img src="{{ url_for('static', filename='img/previous_icon.png') }}" />
+                  </a>
                 </figure>
               </div>
             </section>
@@ -143,7 +145,7 @@
                 <div class="card column is-6">
                   <div class="card-image">
                     <figure class="image is-4by3">
-                      <a href="#" onclick="showHouseDetails('{{ listing[1].capitalize() }}', '{{ listing[7] }}', 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.7aCy-o6NiPeir3w1_fhumwHaGu%26pid%3DApi&f=1', 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.M6v6ps2g1rBCOpqGklqkmAHaIX%26pid%3DApi&f=1', 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.cyRndEwA_vszAjl-1qZtNQHaHK%26pid%3DApi&f=1', '{{ listing[8] }}')">
+                      <a href="#" onclick="showHouseDetails('{{ listing[1].capitalize() }}' + '\'s Place', '{{ listing[7] }}', 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.7aCy-o6NiPeir3w1_fhumwHaGu%26pid%3DApi&f=1', 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.M6v6ps2g1rBCOpqGklqkmAHaIX%26pid%3DApi&f=1', 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.cyRndEwA_vszAjl-1qZtNQHaHK%26pid%3DApi&f=1', '{{ listing[8] }}')">
                         <img src="{{ listing[7] }}" alt="Placeholder image">
                       </a>
                     </figure>
@@ -157,7 +159,9 @@
             <section class="hero">
               <div class="hero-body">
                 <figure class="image is-64x64">
-                  <img src="{{ url_for('static', filename='img/forward_icon.png') }}" />
+                  <a href="#">
+                    <img src="{{ url_for('static', filename='img/forward_icon.png') }}" />
+                  </a>
                 </figure>
               </div>
             </section>
@@ -201,7 +205,9 @@
           <article class="media">
             <div class="media-left">
               <figure class="image is-1by1" style="width:192px;">
-                <img src="{{ context['some_house_pic'] }}" alt="Image">
+                <a href="#" onclick="showHouseDetails('{{ context['some_house'][1].capitalize() }}' + '\'s Place', '{{ context['some_house'][7] }}', 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.7aCy-o6NiPeir3w1_fhumwHaGu%26pid%3DApi&f=1', 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.M6v6ps2g1rBCOpqGklqkmAHaIX%26pid%3DApi&f=1', 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.cyRndEwA_vszAjl-1qZtNQHaHK%26pid%3DApi&f=1', '{{ context['some_house'][8] }}')">
+                  <img src="{{ context['some_house'][7] }}" alt="Image">
+                </a>
               </figure>
             </div>
             <div class="media-content">

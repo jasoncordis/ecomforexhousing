@@ -35,11 +35,11 @@ def main():
     results = cursor.fetchall()
     context['listings_short_list'] = results[:2]
     context['listings'] = results
-    context['some_house_pic'] = None
+    context['some_house'] = None
 
     # quick and sloppy way to get a single image
     for listing in context['listings'][::-1]:
-        context['some_house_pic'] = listing[7]
+        context['some_house'] = listing
         break
 
     conn.close()
