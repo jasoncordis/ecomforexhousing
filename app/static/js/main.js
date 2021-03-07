@@ -34,3 +34,18 @@ function aboutPage() {
   hideElement('main');
   showElement('about-section');
 }
+
+function updateModal(title, primary, image1, image2, image3, image4)
+{
+  document.querySelector('#modal-card-title').textContent = title;
+  document.querySelector('#modal-primary-image').src = primary;
+  document.querySelector('#modal-image-1').src = image1;
+  document.querySelector('#modal-image-2').src = image2;
+  document.querySelector('#modal-image-3').src = image3;
+  document.querySelector('#modal-image-4').src = image4;
+}
+
+function showHouseDetails(title, primary, image1, image2, image3, image4) {
+  updateModal(title, primary, image1, image2, image3, image4);
+  showModal();
+}

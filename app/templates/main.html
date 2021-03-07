@@ -139,11 +139,11 @@
           <div class="column is-8 level-item">
             <div class="columns is-multiline is-variable is-6">
               <!-- Cards here -->
-                {% for listing in context['listings'] %}
+                {% for listing in context['listings_short_list'] %}
                 <div class="card column is-6">
                   <div class="card-image">
                     <figure class="image is-4by3">
-                      <a href="#" onclick="showModal()">
+                      <a href="#" onclick="showHouseDetails('{{ listing[1].capitalize() }}', '{{ listing[7] }}', 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.7aCy-o6NiPeir3w1_fhumwHaGu%26pid%3DApi&f=1', 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.M6v6ps2g1rBCOpqGklqkmAHaIX%26pid%3DApi&f=1', 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.cyRndEwA_vszAjl-1qZtNQHaHK%26pid%3DApi&f=1', '{{ listing[8] }}')">
                         <img src="{{ listing[7] }}" alt="Placeholder image">
                       </a>
                     </figure>
@@ -201,20 +201,21 @@
           <article class="media">
             <div class="media-left">
               <figure class="image is-1by1" style="width:192px;">
-                <img src="https://bulma.io/images/placeholders/256x256.png" alt="Image">
+                <img src="{{ context['some_house_pic'] }}" alt="Image">
               </figure>
             </div>
             <div class="media-content">
               <div class="content">
                 <div class="level">
-                  <strong>type of home</strong>
+                  <!-- Hardcoded cause forgot to add to db and it was kinda late xP -->
+                  <strong>Single-family</strong>
                   <a class="level-right" aria-label="like">
                     <span class="icon is-large">
                       <i class="fas fa-heart fa-2x has-text-danger" aria-hidden="true"></i>
                     </span>
                   </a>
                 </div>
-                1 bedroom &bullet; 1 bath &bullet; for lease
+                2 bedrooms&nbsp;&nbsp;&bullet;&nbsp;1 bath&nbsp;&nbsp;&bullet;&nbsp;for lease
               </div>
               <div class="columns">
                 <div class="column is-1" style="padding-bottom: 0; margin-bottom: 0;"><hr style="padding-bottom: 0; margin-bottom: 0;" /></div>
@@ -222,11 +223,11 @@
               Available now
               <div class="level">
                 <div class="level-right">&nbsp;</div>
-                <div class="level-right">20 sqft</div>
+                <div class="level-right">500 sqft</div>
               </div>
               <div class="level">
                 <div class="level-right">&nbsp;</div>
-                <div class="level-right">$10</div>
+                <div class="level-right">$2000</div>
               </div>
             </div>
           </article>
@@ -246,7 +247,7 @@
     <div class="modal-background"></div>
     <div class="modal-card">
       <header class="modal-card-head">
-        <p id="modal-card-title" class="modal-card-title">Address here?</p>
+        <p id="modal-card-title" class="modal-card-title"></p>
         <button class="delete" aria-label="close" onclick="hideModal()"></button>
       </header>
       <section class="modal-card-body">

@@ -32,7 +32,15 @@ def main():
     '''
     cursor.execute(query)
     conn.commit()
-    context['listings'] = cursor.fetchall()[:2]
+    results = cursor.fetchall()
+    context['listings_short_list'] = results[:2]
+    context['listings'] = results
+    context['some_house_pic'] = None
+
+    # quick and sloppy way to get a single image
+    for listing in context['listings'][::-1]:
+        context['some_house_pic'] = listing[7]
+        break
 
     conn.close()
 
