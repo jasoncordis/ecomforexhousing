@@ -11,9 +11,9 @@ function initPlacesAutoComplete() {
       lat: place.geometry.location.lat(),
       lng: place.geometry.location.lng(),
     };
-    document.getElementById('lat') = coordinates.lat;
-    document.getElementById('lng') = coordinates.lng;
-    console.log(coordinates);
+    // document.getElementById('lat') = coordinates.lat;
+    // document.getElementById('lng') = coordinates.lng;
+    // console.log(coordinates);
   });
 }
 
