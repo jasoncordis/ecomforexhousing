@@ -36,8 +36,8 @@ def main():
 
     return render_template('main.html')
 
-@app.route('/index', methods=['POST'])
-def postIndex():
+@app.route('/signup', methods=['POST'])
+def signup():
     date = request.form['date']
     needPlace = request.form['needPlace']
     return redirect('/sign-up-step-2-1')
@@ -52,7 +52,7 @@ def postStep2():
     phone = request.form['phone']
     email = request.form['email']
     password = request.form['password']
-    return redirect('/sign-up-step-2-2')
+    return name
 
 @app.route('/sign-up-step-2-2')
 def sign_up_step_2_2():
@@ -69,7 +69,8 @@ def sign_up_step_3():
 
 @app.route('/sign-up-step-3', methods=['POST'])
 def postStep3():
-    return redirect('/listing')
+    address = request.form['address']
+    return address
 
 @app.route('/listing')
 def listing():
