@@ -11,10 +11,6 @@
 
 {% block content %}
   <script>
-    function initPlacesAutoComplete() {
-      var input = document.getElementById('locationTextField');
-      var autocomplete = new google.maps.places.Autocomplete(input);
-    }
 
     function updateProgressBar(value) {
       const progressBar = document.querySelector('#progress')
@@ -55,8 +51,6 @@
         3000
       );  // fake load
     }
-
-    google.maps.event.addDomListener(window, 'load', initPlacesAutoComplete);
   </script>
 
   <progress id="progress" class="progress" value="0" max="100">0%</progress>
@@ -67,13 +61,13 @@
         <div class="field">
           <label class="label">Name</label>
           <div class="control">
-            <input class="input" type="text" placeholder="Type your name here!">
+            <input class="input" type="text" name="name" id="name" placeholder="Type your name here!">
           </div>
         </div>
 
         <div class="field">
           <p class="control has-icons-left has-icons-right">
-            <input class="input" type="email" placeholder="Email">
+            <input class="input" type="email" name = "email" id = "email" placeholder="Email">
             <span class="icon is-small is-left">
               <i class="fas fa-envelope"></i>
             </span>
@@ -81,7 +75,7 @@
         </div>
         <div class="field">
           <p class="control has-icons-left">
-            <input class="input" type="password" placeholder="Password">
+            <input class="input" type="password" name = "password" id = "password placeholder="Password">
             <span class="icon is-small is-left">
               <i class="fas fa-lock"></i>
             </span>
@@ -139,6 +133,14 @@
             <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGxfxbrmi3CXefFbev0mtAHByzM7kF0sw&libraries=places"></script>
             <input id="locationTextField" class="input" type="text" placeholder="Where do you want to live?">
           </div>
+          <script>
+            function initPlacesAutoComplete() {
+            var input = document.getElementById('locationTextField');
+            var autocomplete = new google.maps.places.Autocomplete(input);
+          }
+          google.maps.event.addDomListener(window, 'load', initPlacesAutoComplete);
+      </script>
+      
         </div>
 
         <div class="field mt-5">
