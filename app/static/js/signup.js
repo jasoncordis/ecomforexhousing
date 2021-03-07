@@ -1,8 +1,17 @@
 google.maps.event.addDomListener(window, 'load', initPlacesAutoComplete);
 
 function initPlacesAutoComplete() {
+  console.log('hey')
   var input = document.getElementById('locationTextField');
   var autocomplete = new google.maps.places.Autocomplete(input);
+
+    google.maps.event.addListener(autocomplete, 'place_changed', function() {
+      console.log('hey');
+      var place = autocomplete.getPlace();
+      console.log(place);
+      document.getElementById("lat").innerHTML = place.geometry.location.lat();
+      document.getElementById("lng").innerHTML = place.geometry.location.lng();           
+  });
 }
 
 function updateProgressBar(value) {
