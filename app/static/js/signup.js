@@ -40,6 +40,12 @@ function finishStep4() {
     function () {
       updateProgressBar('100');
       document.querySelector('#progressbartext').textContent = "you made it!";
+      window.setTimeout(
+        function () {
+          window.location.href = '/main';
+        },
+        2000
+      )
     },
     3000
   );  // fake load
