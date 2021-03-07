@@ -1,13 +1,11 @@
 google.maps.event.addDomListener(window, 'load', initPlacesAutoComplete);
 
 function initPlacesAutoComplete() {
-  var input = document.getElementById('locationTextField');
-  var autocomplete = new google.maps.places.Autocomplete(input);
-  console.log('hey');
+  console.log('hey')
   var input = document.getElementById('locationTextField');
   var autocomplete = new google.maps.places.Autocomplete(input);
 
-  google.maps.event.addDomListener(autocomplete, 'place_changed', function() {
+  google.maps.event.addListener(autocomplete, 'place_changed', function() {
     console.log('hey');
     var place = autocomplete.getPlace();
     console.log(place);
