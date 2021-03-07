@@ -42,6 +42,7 @@ function finishStep4() {
       document.querySelector('#progressbartext').textContent = "you made it!";
       window.setTimeout(
         function () {
+          // Go to main.
           window.location.href = '/main';
         },
         2000

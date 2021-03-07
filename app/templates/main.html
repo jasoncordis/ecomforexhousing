@@ -2,7 +2,7 @@
 
 
 {% block title %}
-  E-Haus Finder
+  E-HAUS FINDER
 {% endblock %}
 
 {% block script %}
@@ -13,8 +13,12 @@
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="{{ url_for('main') }}">
-        <!-- <img src="{{ url_for('static', filename='img/somelogo.png') }}" width="112" height="28"> -->
-        <span class="is-size-5">EHAUS FINDER</span>
+        <figure class="image">
+          <img src="{{ url_for('static', filename='img/logo.png') }}">
+        </figure>
+      </a>
+      <a class="navbar-item" href="{{ url_for('main') }}">
+        <span class="is-size-5">E-HAUS FINDER</span>
       </a>
 
       <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
