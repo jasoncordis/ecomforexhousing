@@ -29,3 +29,8 @@ function addNavbarBurgerFunctionality() {
     }
   });
 }
+
+function aboutPage() {
+  hideElement('main');
+  showElement('about-section');
+}

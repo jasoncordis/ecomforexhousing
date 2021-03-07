@@ -45,7 +45,7 @@
           </a>
 
           <div class="navbar-dropdown is-right">
-            <a class="navbar-item">
+            <a class="navbar-item" onclick="aboutPage()">
               About
             </a>
             <a class="navbar-item">
@@ -83,7 +83,7 @@
     }
   </script>
 
-  <section class="section" style="padding-right: 0; padding-bottom: 0; margin-right: 0; margin-bottom: 0;">
+  <section id="main" class="section" style="padding-right: 0; padding-bottom: 0; margin-right: 0; margin-bottom: 0;">
     <div class="columns">
 
       <div class="column is-7" style="padding-bottom: 0; margin-bottom: 0;">
@@ -246,28 +246,54 @@
       <section class="modal-card-body">
 
         <div class="tile is-ancestor">
-          <div class="tile is-parent">
-            <article class="tile is-child box">
-              <figure class="image is-1by1">
-                <img id="modal-primary-image" src="https://bulma.io/images/placeholders/480x480.png" alt="Image">
-              </figure>
-            </article>
-          </div>
-        </div>
+          <div class="tile is-horizontal">
 
-        <div class="tile is-ancestor">
-          <div class="tile is-parent is-horizontal">
-            <article class="tile is-child box">
-              <figure class="image is-1by1">
-                <img id="modal-secondary-image" src="https://bulma.io/images/placeholders/256x256.png" alt="Image">
-              </figure>
-            </article>
-            <article class="tile is-child box">
-              <figure class="image is-1by1">
-                <img id="modal-tertiary-image" src="https://bulma.io/images/placeholders/256x256.png" alt="Image">
-              </figure>
-            </article>
+            <div class="tile is-parent">
+              <div class="tile is-child box">
+                <figure class="image">
+                  <img id="modal-primary-image" src="https://bulma.io/images/placeholders/480x480.png" alt="Image" />
+                </figure>
+              </div>
+            </div>
+            <div class="tile is-5 is-vertical">
+
+              <div class="tile is-parent is horizontal">
+                <div class="tile is-child box">
+                  <figure class="image">
+                    <img id="modal-image-1" src="https://bulma.io/images/placeholders/128x128.png" alt="Image" />
+                  </figure>
+                </div>
+                <div class="tile is-child box">
+                  <figure class="image">
+                    <img id="modal-image-2" src="https://bulma.io/images/placeholders/128x128.png" alt="Image" />
+                  </figure>
+                </div>
+              </div>
+              <div class="tile is-parent is horizontal">
+                <div class="tile is-child box">
+                  <figure class="image">
+                    <img id="modal-image-3" src="https://bulma.io/images/placeholders/128x128.png" alt="Image" />
+                  </figure>
+                </div>
+                <div class="tile is-child box">
+                  <figure class="image">
+                    <img id="modal-image-4" src="https://bulma.io/images/placeholders/128x128.png" alt="Image" />
+                  </figure>
+                </div>
+              </div>
+              <!-- Button? -->
+              <div class="tile is-parent">
+                <div class="tile is-child box">
+                  <figure class="image">
+                    <img id="modal-image-button" src="https://bulma.io/images/placeholders/720x240.png" alt="Image" />
+                  </figure>
+                </div>
+              </div>
+
+            </div>
+
           </div>
+
         </div>
 
         <div class="tile is-ancestor">
@@ -312,14 +338,77 @@
   </div>
 
   <section id="about-section" class="section is-hidden">
-    <div class="block content">
+    <div class="columns block content">
+      <div class="column is-1"></div>
+      <div class="column is-5">
+        <h1>About us</h1>
+        We work on Channelinzing the incoming and outgoing of the students accomodation across America. We strongly belive that the Ecomerce Home industry has a huge potential when it comes to delivering the right rent to owners and great stay
+        for students.<br>
+        Our vision is to provide a safe platform for everyone, who needs house for rents through online means without going physically and without broker fees. We are here to push the idea of recycling and reusing
+        to new heights by bridging the gap between collectors and the buyers.
+        <br><br>
+        <h3> Join us in our journey on making America a better and safer housing place.</h3>
+        <blockquote>"Home is where love resides, memories are created, friends always belong, and laughter never ends."</blockquote>
+      </div>
+      <div class="column is-1"></div>
+      <div class="column is-4">
+        <figure class="image">
+          <img src="{{ url_for('static', filename='img/s3.jpg') }}" style="border-radius: 25px;" />
+        </figure>
+      </div>
+      <div class="column is-1"></div>
+    </div>
+
+    <div class="columns block content mt-6">
+      <div class="column is-1"></div>
+      <div class="column is-10">
+
+        <h2> What we do?</h2>
+        <hr>
+        E-Commerce for housing is a site that connects international students with homeowners and roommates at their desired location. Students can specify their city of choice, housing needs, and price range, and browse through matches that are best suited to
+        them. Landlords can also use this website to create their own listings and find tenants that will be right for them by matching with students. We hope this site will change the way students and homeowners look at housing and create better
+        communities.
+        <p class="subtitle has-text-weight-semibold">
+          <br> Why owner should rent?
+          <br> What students get from rented house?
+        </p>
+        This website makes us unique by how we're using the QR Echo thing to help foreign students have an easier time finding housing. "You never know what you'll get when finding a house in another country. At HomeSweetHome, we want to
+        take the mystery out of the equation and make this big decision seamless. We use Echo AR technology to give you a new way of trying out your new home. Pick up your phone, scan the QR code, and ta da! Just like that you're testing out your
+        living space without even getting on the plane" Our team is always looking out for new sustainable business models which aren't only viable but also socially beneficial.Join us in our journey in making America's housing a better and safer
+        place. Join us today with a journey of thousand miles begins with a single step.So,be ready let's do something in the favour of our students and owners.
+        <br><br>
+        <p class="subtitle has-text-weight-semibold">
+          Get Set & See your perfect home today!!!
+        </p>
+
+      </div>
+
+      <div class="column is-1"></div>
+    </div>
+
+    <div class="columns block content">
+      <div class="column is-1"></div>
+      <figure class="column image">
+        <img src="{{ url_for('static', filename='img/s1.jpg') }}" style="border-radius: 25px;" alt="Scrap collectors">
+      </figure>
+      <div class="column is-1"></div>
+      <figure class="column image">
+        <img src="{{ url_for('static', filename='img/s2.jpg') }}" style="border-radius: 25px;" alt="Scrap collectors">
+      </figure>
+      <div class="column is-1"></div>
 
     </div>
-    <h3>About us</h3>
-      We at HomeSweetHome work on Channelinzing the incoming and outgoing of the students accomodation across America. We strongly belive that the Ecomerce Home industry has a huge potential when it comes to delivering the right rent to owners and great stay
-      for students.<br> Our vision is to provide a safe platform for everyone, who needs house for rents through online means without going physically and without broker fees. We are here to push the idea of recycling and reusing
-      to new heights by bridging the gap between collectors and the buyers.<br><br>
-      <h3> Join us in our journey on making America a better and safer housing place.</h3>
+
+    <div class="columns block content">
+      <div class="column is-1"></div>
+      <div class="column is-10">
+        <h2>How does it work?</h2>
+        <div>Infinity Scrapers is a service which helps you to sell your old stuff in an organized manner instead of just throwing it away.</div>
+        <div>It is as easy as calling or dropping us a note and.. Kaboom! You get rid of your stuff just like that!
+      </div>
+      <div class="column is-1"></div>
+    </div>
+
   </section>
 
 
