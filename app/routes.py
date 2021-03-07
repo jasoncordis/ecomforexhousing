@@ -15,26 +15,29 @@ def index():
 
 @app.route('/main')
 def main():
-    # conn = psycopg2.connect(
-    #         dbname=db_config.dbname,
-    #         user=db_config.user,
-    #         password=db_config.password,
-    #         host=db_config.host,
-    #         port=db_config.port,
-    #     )
-    # cursor = conn.cursor()
+    context = {}
+    context['args'] = request.args
 
-    # query = '''
-    # SELECT * FROM Listings;
-    # '''
-    # cursor.execute(query)
-    # conn.commit()
-    # data = cursor.fetchall()
-    # print(data)
+    conn = psycopg2.connect(
+            dbname=db_config.dbname,
+            user=db_config.user,
+            password=db_config.password,
+            host=db_config.host,
+            port=db_config.port,
+        )
+    cursor = conn.cursor()
 
-    # conn.close()
+    query = '''
+    SELECT * FROM Listings;
+    '''
+    cursor.execute(query)
+    conn.commit()
+    context['listings'] = cursor.fetchall()[:2]
 
-    return render_template('main.html')
+    conn.close()
+
+    print(context)
+    return render_template('main.html', context=context)
 
 @app.route('/signup', methods=['POST'])
 def signup():

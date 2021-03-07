@@ -32,6 +32,10 @@ function hideModal() {
   document.getElementsByTagName('body')[0].classList.remove('is-clipped');
 }
 
+function toggleIsActive(htmlNodeElement) {
+  htmlNodeElement.classList.toggle('is-active');
+}
+
 /**
  * Submits the input values to the specified route.
  * @param {string} route
