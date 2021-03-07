@@ -11,8 +11,9 @@ function initPlacesAutoComplete() {
       lat: place.geometry.location.lat(),
       lng: place.geometry.location.lng(),
     };
+    document.getElementById('lat') = coordinates.lat;
+    document.getElementById('lng') = coordinates.lng;
     console.log(coordinates);
-    console.log(typeof(coordinates.lat) + '\n' + typeof(coordinates.lng));
   });
 }
 
@@ -50,11 +51,13 @@ function finishStep4() {
   window.setTimeout(
     function () {
       updateProgressBar('100');
-      document.querySelector('#progressbartext').textContent = "you made it!";
+      // document.querySelector('#progressbartext').textContent = "you made it!";
+      const destination = `/main?lat=${coordinates.lat}&lng=${coordinates.lng}`;
+      console.log(destination);
       window.setTimeout(
         function () {
           // Go to main.
-          window.location.href = `/main?lat=${coordinates.lat}&lng=${coordinates.lng}`;
+          window.location.href = destination;
         },
         2000
       );
