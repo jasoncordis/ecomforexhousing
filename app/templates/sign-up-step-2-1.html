@@ -10,12 +10,15 @@
     <header>
         <h1>The Basics</h1>
     </header>
-    <form name = "login">
+    <form name = "login" action = "/sign-up-step-2-1" method = "POST">
         <fieldset>
             <legend>Registration</legend>
             <label for = "Name"></label>
             Name
             <input type="text" name ="name"/>
+            <br/>
+            <label for = "phone">Phone </label>
+            <input type="tel" id="phone" name="phone" required>
             <br/>
             Email
             <label for = "email"></label>

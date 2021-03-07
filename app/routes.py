@@ -1,4 +1,6 @@
 from flask import render_template
+from flask import request
+from flask import Flask, redirect
 from app import app
 import app.config.db as db_config
 import psycopg2
@@ -29,11 +31,44 @@ def index():
 
     return render_template('signup.html')
 
+@app.route('/index', methods=['POST'])
+def postIndex():
+    date = request.form['date']
+    needPlace = request.form['needPlace']
+    return redirect('/sign-up-step-2-1')
 
 @app.route('/sign-up-step-2-1')
 def sign_up_step_2_1():
     return render_template('sign-up-step-2-1.html')
 
+@app.route('/sign-up-step-2-1', methods=['POST'])
+def postStep2():
+    name = request.form['name']
+    phone = request.form['phone']
+    email = request.form['email']
+    password = request.form['password']
+    return redirect('/sign-up-step-2-2')
+
+@app.route('/sign-up-step-2-2')
+def sign_up_step_2_2():
+    return render_template('sign-up-step-2-2.html')
+
+@app.route('/sign-up-step-2-2', methods=['POST'])
+def postStep2p2():
+    description = request.form['description']
+    return redirect('/sign-up-step-3')
+
+@app.route('/sign-up-step-3')
+def sign_up_step_3():
+    return render_template('sign-up-step-3.html')
+
+@app.route('/sign-up-step-3', methods=['POST'])
+def postStep3():
+    return redirect('/listing')
+
+@app.route('/listing')
+def listing():
+    return render_template('listing.html')
 
 # For testing purposes
 @app.route('/create-tables')
@@ -110,3 +145,4 @@ def reset():
     finally:
         conn.close()
     return 'data reset'
+
