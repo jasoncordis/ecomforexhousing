@@ -1,56 +1,24 @@
 <!DOCTYPE html>
-<html lang = "en">
-<head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="home.css">
-    <meta charset="utf-8">
-    <title>Registration</title>
-</head>
+<html>
+  <head>
+    <title>www.W3docs.com</title>
+    <style>
+      input {
+        height: 30px;
+        padding-left: 10px;
+        border-radius: 4px;
+        border: 1px solid rgb(186, 178, 178);
+        box-shadow: 0px 0px 12px #EFEFEF;
+      }
+    </style>
+   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGxfxbrmi3CXefFbev0mtAHByzM7kF0sw&libraries=places"></script>
+  </head>
   <body>
-    <div class="container">
-      <header>
-          <h1>Registration</h1>
-      </header>
-      <form name = "login">
-          <fieldset>
-              <legend>Sign Up</legend>
-              <div class="mb-3">
-                I
-                <select class="form-select" name="needPlace" id="needPlace">
-                    <option value=""></option>
-                    <option value="needHouse">Need a house</option>
-                    <option value="needRoom">Need a room</option>
-                    <option value="needRoommate">Need a roommate</option>
-                  </select>
-              </div>
-              <br/>
-              and want to move in on
-              <div class="mb-3">
-                <label class="form-label" for = "date"></label>
-                <input class="form-control" type="date" name ="date"/>
-              </div>
-              <br/>
-              <div class="mb-3">
-              <label class="form-label" for = "password"></label>
-              in this
-              <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGxfxbrmi3CXefFbev0mtAHByzM7kF0sw&libraries=places"></script>
-              </div>
-              <div class="mb-3">
-                <label class="form-label" for="locationTextField">Location</label>
-                <input class="form-control" id="locationTextField" size="50" type="text" />
-              </div>
-          </fieldset>
-          <button onclick="//javascript function">Find Home</button>
-      </form>
-    </div>
-    <p id="Submitted"></p>
-    </body>
-</html>
+    <input type="text" id="autocomplete"/>
 
-<script>
-    function init() {
-       var input = document.getElementById('locationTextField');
-       var autocomplete = new google.maps.places.Autocomplete(input);
-    }
- google.maps.event.addDomListener(window, 'load', init);
- </script>
+    <script>
+      var input = document.getElementById('autocomplete');
+      var autocomplete = new google.maps.places.Autocomplete(input);
+    </script>
+  </body>
+</html>

@@ -12,8 +12,16 @@ CREATE TABLE Listings (
     sell_date DATE
 );
 
-DROP TABLE IF EXISTS Student;
+DROP TABLE IF EXISTS StudentTest;
 
+CREATE TABLE Student(
+    student_id SERIAL UNIQUE NOT NULL PRIMARY KEY,
+    student_needPlace VARCHAR(30),
+    student_moveDate DATE,
+    student_moveLocation VARCHAR(30),
+)
+
+/*
 CREATE TABLE Student(
     student_id SERIAL UNIQUE NOT NULL PRIMARY KEY,
     student_needPlace VARCHAR(30),
@@ -30,5 +38,6 @@ CREATE TABLE Student(
     student_price NUMERIC(16, 2) NOT NULL,
     student_birthday DATE
 )
+*/
 
 COMMIT;

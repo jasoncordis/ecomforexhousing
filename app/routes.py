@@ -27,7 +27,7 @@ def index():
 
     # conn.close()
 
-    return render_template('main.html')
+    return render_template('index.html')
 
 
 @app.route('/sign-up-step-2-1')
@@ -110,3 +110,9 @@ def reset():
     finally:
         conn.close()
     return 'data reset'
+
+@app.route('/index', method=['POST'])
+def postTesting():
+    date = request.form['date']
+    print date
+    return 'a string'
