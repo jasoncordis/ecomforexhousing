@@ -27,7 +27,7 @@ def index():
 
     # conn.close()
 
-    return render_template('main.html')
+    return render_template('signup.html')
 
 
 @app.route('/sign-up-step-2-1')
