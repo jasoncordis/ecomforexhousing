@@ -42,12 +42,15 @@ function finishStep4() {
       document.querySelector('#progressbartext').textContent = "you made it!";
       window.setTimeout(
         function () {
+          let chosenLocation = document.querySelect('#locationTextField');
+          let test = "https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY"
+
           // Go to main.
-          window.location.href = '/main';
+          window.location.href = `/main?location=${chosenLocation}`;
         },
         2000
-      )
+      );
     },
     3000
-  );  // fake load
+  );  // fake load times
 }
