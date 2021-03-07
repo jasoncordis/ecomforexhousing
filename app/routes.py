@@ -8,8 +8,13 @@ from pathlib import Path
 
 
 @app.route('/')
-@app.route('/index')
+@app.route('/signup')
 def index():
+    return render_template('signup.html')
+
+
+@app.route('/main')
+def main():
     # conn = psycopg2.connect(
     #         dbname=db_config.dbname,
     #         user=db_config.user,
@@ -29,7 +34,7 @@ def index():
 
     # conn.close()
 
-    return render_template('signup.html')
+    return render_template('main.html')
 
 @app.route('/index', methods=['POST'])
 def postIndex():

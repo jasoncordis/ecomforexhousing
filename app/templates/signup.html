@@ -2,209 +2,164 @@
 
 
 {% block title %}
-  Sign up!
+  E-Haus Finder
 {% endblock %}
 
 {% block script %}
-  <!-- <script src="{{ url_for('static', filename='js/base.js') }}"></script> -->
+  <script src="{{ url_for('static', filename='js/signup.js') }}"></script>
 {% endblock %}
 
 {% block content %}
-  <script>
-    function initPlacesAutoComplete() {
-      var input = document.getElementById('locationTextField');
-      var autocomplete = new google.maps.places.Autocomplete(input);
-    }
-
-    function updateProgressBar(value) {
-      const progressBar = document.querySelector('#progress')
-      progressBar.value = `${value}`;
-      progressBar.textContent = `${value}%`;
-    }
-
-    function finishStep1() {
-      event.preventDefault();
-      if (
-        document.querySelector('#agereq').checked &&
-        document.querySelector('#tosaccept').checked
-      ) {
-        animateToNextStep('step1', 'step2', 'animate__backOutRight');
-        updateProgressBar('25');
-      }
-    }
-
-    function finishStep2() {
-      event.preventDefault();
-      animateToNextStep('step2', 'step3', 'animate__backOutRight');
-      updateProgressBar('50');
-    }
-
-    function finishStep3() {
-      event.preventDefault();
-      animateToNextStep('step3', 'step4', 'animate__backOutRight');
-      updateProgressBar('75');
-      finishStep4();  // didn't implement the neighborhood selection
-    }
-
-    function finishStep4() {
-      window.setTimeout(
-        function () {
-          updateProgressBar('100');
-          document.querySelector('#progressbartext').textContent = "you made it!";
-        },
-        3000
-      );  // fake load
-    }
-
-    google.maps.event.addDomListener(window, 'load', initPlacesAutoComplete);
-  </script>
-
-  <progress id="progress" class="progress" value="0" max="100">0%</progress>
-  <div id="progressbartext"></div>
   <section class="section">
-    <form>
-      <div id="step1" class="column is-half is-offset-one-quarter">
-        <div class="field">
-          <label class="label">Name</label>
-          <div class="control">
-            <input class="input" type="text" placeholder="Type your name here!">
-          </div>
-        </div>
+    <div class="container">
+      <progress id="progress" class="progress" value="0" max="100">0%</progress>
+      <div id="progressbartext"></div>
+      <section class="section">
+        <form>
+          <div id="step1" class="column is-half is-offset-one-quarter">
+            <div class="field">
+              <label class="label">Name</label>
+              <div class="control">
+                <input class="input" type="text" placeholder="Type your name here!">
+              </div>
+            </div>
 
-        <div class="field">
-          <p class="control has-icons-left has-icons-right">
-            <input class="input" type="email" placeholder="Email">
-            <span class="icon is-small is-left">
-              <i class="fas fa-envelope"></i>
-            </span>
-          </p>
-        </div>
-        <div class="field">
-          <p class="control has-icons-left">
-            <input class="input" type="password" placeholder="Password">
-            <span class="icon is-small is-left">
-              <i class="fas fa-lock"></i>
-            </span>
-          </p>
-        </div>
+            <div class="field">
+              <p class="control has-icons-left has-icons-right">
+                <input class="input" type="email" placeholder="Email">
+                <span class="icon is-small is-left">
+                  <i class="fas fa-envelope"></i>
+                </span>
+              </p>
+            </div>
+            <div class="field">
+              <p class="control has-icons-left">
+                <input class="input" type="password" placeholder="Password">
+                <span class="icon is-small is-left">
+                  <i class="fas fa-lock"></i>
+                </span>
+              </p>
+            </div>
 
-        <div class="field">
-          <div class="control">
-            <label class="checkbox">
-              <input type="checkbox" id="agereq" name="agereq" value="accept" required>
-              I am 18+ years of age
-            </label>
-          </div>
-        </div>
+            <div class="field">
+              <div class="control">
+                <label class="checkbox">
+                  <input type="checkbox" id="agereq" name="agereq" value="accept" required>
+                  I am 18+ years of age
+                </label>
+              </div>
+            </div>
 
-        <div class="field">
-          <div class="control">
-            <label class="checkbox">
-              <input type="checkbox" id="tosaccept" name="tosaccept" value="accept" required>
-              I accept the <a href="#">TOS and Privacy Rules</a>
-            </label>
-          </div>
-        </div>
+            <div class="field">
+              <div class="control">
+                <label class="checkbox">
+                  <input type="checkbox" id="tosaccept" name="tosaccept" value="accept" required>
+                  I accept the <a href="#">TOS and Privacy Rules</a>
+                </label>
+              </div>
+            </div>
 
-        <div class="field is-grouped">
-          <div class="control">
-            <button id="step1-next" class="button is-link" onclick="finishStep1()">Next</button>
-          </div>
-        </div>
-      </div>
-
-      <div id="step2" class="column is-half is-offset-one-quarter is-hidden">
-        <div class="column is-offset-5">
-          <label class="file-label">
-            <input class="file-input" type="file" name="inputimage">
-            <figure class="image is-128x128">
-              <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-            </figure>
-          </label>
-        </div>
-        <div class="column is-7 is-offset-3">
-          <textarea class="textarea" name="postdescription" placeholder="Put your description here!"></textarea>
-        </div>
-        <div class="field is-grouped">
-          <div class="control column is-7 is-offset-3">
-            <button id="step2-next" class="button is-link" onclick="finishStep2()">Next</button>
-          </div>
-        </div>
-      </div>
-
-      <div id="step3" class="column is-half is-offset-one-quarter is-hidden">
-        <div class="field">
-          <label for="locationTextField" class="label">Location</label>
-          <div class="control">
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGxfxbrmi3CXefFbev0mtAHByzM7kF0sw&libraries=places"></script>
-            <input id="locationTextField" class="input" type="text" placeholder="Where do you want to live?">
-          </div>
-        </div>
-
-        <div class="field mt-5">
-          <div class="is-size-5 mb-2">What kind of house?</div>
-          <div class="control columns is-multiline">
-            <label class="checkbox column">
-              <input type="checkbox" id="apartment" name="apartment" value="apartment">
-              Apartment
-            </label>
-            <label class="checkbox column">
-              <input type="checkbox" id="room" name="room" value="room">
-              Room
-            </label>
-            <label class="checkbox column">
-              <input type="checkbox" id="townhouse" name="townhouse" value="townhouse">
-              Townhouse
-            </label>
-            <label class="checkbox column">
-              <input type="checkbox" id="single-family" name="single-family" value="single-family">
-              Single-family
-            </label>
+            <div class="field is-grouped">
+              <div class="control">
+                <button id="step1-next" class="button is-link" onclick="finishStep1()">Next</button>
+              </div>
+            </div>
           </div>
 
-          <div class="is-size-5 mt-5 mb-2">How many Beds?</div>
-          <div class="control columns">
-            <div class="column is-10">Beds</div>
-            <label class="checkbox column">
-              <input type="number" id="bedNum" class="input is-static" value="0" min="0" />
-            </label>
+          <div id="step2" class="column is-half is-offset-one-quarter is-hidden">
+            <div class="column is-offset-5">
+              <label class="file-label">
+                <input class="file-input" type="file" name="inputimage">
+                <figure class="image is-128x128">
+                  <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+                </figure>
+              </label>
+            </div>
+            <div class="column is-7 is-offset-3">
+              <textarea class="textarea" name="postdescription" placeholder="Put your description here!"></textarea>
+            </div>
+            <div class="field is-grouped">
+              <div class="control column is-7 is-offset-3">
+                <button id="step2-next" class="button is-link" onclick="finishStep2()">Next</button>
+              </div>
+            </div>
           </div>
-          <div class="columns">
-            <div class="control column is-10">Bathrooms</div>
-            <label class="checkbox column">
-              <input type="number" id="bathNum" class="input is-static" value="0" min="0" />
-            </label>
+
+          <div id="step3" class="column is-half is-offset-one-quarter is-hidden">
+            <div class="field">
+              <label for="locationTextField" class="label">Where do you want to live?</label>
+              <div class="control">
+                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGxfxbrmi3CXefFbev0mtAHByzM7kF0sw&libraries=places"></script>
+                <input id="locationTextField" class="input" type="text" placeholder="Where do you want to live?">
+              </div>
+            </div>
+
+            <div class="field mt-5">
+              <div class="is-size-5 mb-2">What kind of place?</div>
+              <div class="control columns is-multiline">
+                <label class="checkbox column">
+                  <input type="checkbox" id="apartment" name="apartment" value="apartment">
+                  Apartment
+                </label>
+                <label class="checkbox column">
+                  <input type="checkbox" id="room" name="room" value="room">
+                  Room
+                </label>
+                <label class="checkbox column">
+                  <input type="checkbox" id="townhouse" name="townhouse" value="townhouse">
+                  Townhouse
+                </label>
+                <label class="checkbox column">
+                  <input type="checkbox" id="single-family" name="single-family" value="single-family">
+                  Single-family
+                </label>
+              </div>
+
+              <div class="is-size-5 mt-5 mb-2">How many Beds?</div>
+              <div class="control columns">
+                <div class="column is-10">Beds</div>
+                <label class="checkbox column">
+                  <input type="number" id="bedNum" class="input is-static" value="0" min="0" />
+                </label>
+              </div>
+              <div class="columns">
+                <div class="control column is-10">Bathrooms</div>
+                <label class="checkbox column">
+                  <input type="number" id="bathNum" class="input is-static" value="0" min="0" />
+                </label>
+              </div>
+
+              <div class="is-size-5 mt-5 mb-2">House rules?</div>
+              <div class="control columns is-multiline">
+                <label class="checkbox column">
+                  <input type="checkbox" id="pets" name="pets" value="pets">
+                  Yes pets!
+                </label>
+                <label class="checkbox column">
+                  <input type="checkbox" id="no-smoking" name="no-smoking" value="no-smoking">
+                  No smoking
+                </label>
+              </div>
+            </div>
+
+            <div class="field is-grouped">
+              <div class="control is-7 is-offset-3">
+                <button id="step2-next" class="button is-link" onclick="finishStep3()">Next</button>
+              </div>
+            </div>
           </div>
 
-          <div class="is-size-5 mt-5 mb-2">House rules?</div>
-          <div class="control columns is-multiline">
-            <label class="checkbox column">
-              <input type="checkbox" id="pets" name="pets" value="pets">
-              Yes pets!
-            </label>
-            <label class="checkbox column">
-              <input type="checkbox" id="no-smoking" name="no-smoking" value="no-smoking">
-              No smoking
-            </label>
+          <div id="step4" class="is-hidden">
+            <div class="column is-one-third is-offset-4">
+              <figure class="image is-4-by-5">
+                <img src="{{ url_for('static', filename='img/preparing_remaining_matches.png') }}" />
+              </figure>
+            </div>
           </div>
-        </div>
 
-
-        <div class="field is-grouped">
-          <div class="control is-7 is-offset-3">
-            <button id="step2-next" class="button is-link" onclick="finishStep3()">Next</button>
-          </div>
-        </div>
-      </div>
-
-      <div id="step4" class="is-hidden">
-        <div class="column is-one-third is-offset-4">
-          <figure class="image is-4-by-5">
-            <img src="{{ url_for('static', filename='img/preparing_remaining_matches.png') }}" />
-          </figure>
-        </div>
-      </div>
-
-    </form>
+        </form>
+      </section>
+    </div>
   </section>
+
 {% endblock %}

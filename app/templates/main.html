@@ -1,105 +1,234 @@
+{% extends 'base.html' %}
 
-<!DOCTYPE html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Map</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-</head>
-<body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#"><span class="navbar-toggler-icon"></span></a>
+{% block title %}
+  E-Haus Finder
+{% endblock %}
+
+{% block script %}
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% endblock %}
+
+{% block navbar %}
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="{{ url_for('main') }}">
+        <!-- <img src="{{ url_for('static', filename='img/somelogo.png') }}" width="112" height="28"> -->
+        <span class="is-size-5">EHAUS FINDER</span>
+      </a>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbar-menu" class="navbar-menu">
+      <div class="navbar-start">
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <img src="{{ url_for('static', filename='img/message_icon.png') }}" />
+        </div>
+        <div class="navbar-item">
+          <img src="{{ url_for('static', filename='img/user_icon.png') }}" />
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Menu
+          </a>
+
+          <div class="navbar-dropdown is-right">
+            <a class="navbar-item">
+              A
+            </a>
+            <a class="navbar-item">
+              B
+            </a>
+            <a class="navbar-item">
+              C
+            </a>
+            <hr class="navbar-divider">
+            <a class="navbar-item">
+              D
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </nav>
+  </section>
+{% endblock %}
 
-  <script src="{{ url_for('static', filename='js/base.js') }}"></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+{% block content %}
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  <script>
+    function initMap() {
+      const myLatLng = { lat: -25.363, lng: 131.044 };
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 4,
+        center: myLatLng,
+      });
+      new google.maps.Marker({
+        position: myLatLng,
+        map,
+        title: "Hello World!",
+      });
+    }
+  </script>
 
-  <section class="section">
-    <div class="container-fluid my-2">
+  <section class="section" style="padding-right: 0; padding-bottom: 0; margin-right: 0; margin-bottom: 0;">
+    <div class="columns">
 
-      <div class="row my-3">
-        &nbsp;&nbsp;options here
-        <hr />
+      <div class="column is-7" style="padding-bottom: 0; margin-bottom: 0;">
+        <!-- Row 1-->
+        <div class="columns level">
+          <div class="column is-1 level-item"></div>
+          <button class="button is-dark column is-2 level-item">Homes</button>
+          <button class="button is-ghost column is-2 level-item">Roommates</button>
+          &nbsp;&nbsp;&nbsp;&nbsp;IN&nbsp;
+          <div class="control column is-2 level-item">
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGxfxbrmi3CXefFbev0mtAHByzM7kF0sw&libraries=places"></script>
+            <input id="locationTextField" class="input" type="text" placeholder="LOCATION">
+          </div>
+          <div class="column is-3"></div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="columns level mt-4">
+          <div class="column is-1 level-item"></div>
+          <button class="button is-ghost column is-2 level-item">Lease length</button>
+          <button class="button is-ghost column is-2 level-item">Move-in date</button>
+          <button class="button is-ghost column is-2 level-item">Budget</button>
+          <button class="button is-ghost column is-2 level-item"><figure class="image is-16x16" style="display:inline-flex;"><img src="{{ url_for('static', filename='img/filter_icon.png') }}" /></figure>&nbsp;More filters</button>
+          <div class="column is-1 level-item"></div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="column is-size-4 mt-6 mb-5">TOP MATCHES</div>
+
+        <!-- Row 4 -->
+        <div class="columns level">
+
+          <div class="column is-2 level-item">
+            <section class="hero">
+              <div class="hero-body">
+                <figure class="image is-64x64">
+                  <img src="{{ url_for('static', filename='img/previous_icon.png') }}" />
+                </figure>
+              </div>
+            </section>
+          </div>
+          <div class="column is-8 level-item">
+            <div class="columns is-multiline is-variable is-6">
+              <div class="card column is-6">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                  </figure>
+                </div>
+              </div>
+              <div class="card column is-6">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column is-2 level-item">
+            <section class="hero">
+              <div class="hero-body">
+                <figure class="image is-64x64">
+                  <img src="{{ url_for('static', filename='img/forward_icon.png') }}" />
+                </figure>
+              </div>
+            </section>
+          </div>
+
+        </div>
+
+        <!-- Row 5 -->
+        <div class="columns mt-6 mb-5">
+          <div class="column is-10 is-size-4">EXPLORE HOMES</div>
+          <div class="column is-2">
+            <div class="dropdown is-right is-active">
+              <div class="dropdown-trigger">
+                <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                  <span>Sort by</span>
+                  <span class="icon is-small">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="dropdown-menu" id="dropdown-menu" role="menu">
+                <div class="dropdown-content">
+                  <a href="#" class="dropdown-item">
+                    Lease length
+                  </a>
+                  <a class="dropdown-item">
+                    Move-in date
+                  </a>
+                  <a href="#" class="dropdown-item is-active">
+                    Price
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Row 6 -->
+        <div class="box">
+          <article class="media">
+            <div class="media-left">
+              <figure class="image is-1by1" style="width:192px;">
+                <img src="https://bulma.io/images/placeholders/256x256.png" alt="Image">
+              </figure>
+            </div>
+            <div class="media-content">
+              <div class="content">
+                <div class="level">
+                  <strong>type of home</strong>
+                  <a class="level-right" aria-label="like">
+                    <span class="icon is-small">
+                      <i class="fas fa-heart" aria-hidden="true"></i>
+                    </span>
+                  </a>
+                </div>
+                1 bedroom &bullet; 1 bath &bullet; for lease
+              </div>
+              <div class="columns">
+                <div class="column is-1" style="padding-bottom: 0; margin-bottom: 0;"><hr style="padding-bottom: 0; margin-bottom: 0;" /></div>
+              </div>
+              Available now
+              <div class="level">
+                <div class="level-right">&nbsp;</div>
+                <div class="level-right">Area</div>
+              </div>
+              <div class="level">
+                <div class="level-right">&nbsp;</div>
+                <div class="level-right">$$$</div>
+              </div>
+            </div>
+          </article>
+        </div>
+
       </div>
 
-      <div class="row">
-        <div class="col mx-2">
-          <iframe width="1000" height="750" style="border:0" loading="lazy" allowfullscreen
-            src="https://www.google.com/maps/embed/v1/view?zoom=17&center=41.8344,-87.6392&key=AIzaSyCGxfxbrmi3CXefFbev0mtAHByzM7kF0sw"></iframe>
-        </div>
-
-        <div class="col mx-2">
-
-          <!-- Listings -->
-          <div class="row my-3">
-            <div class="col">
-              <div class="card" style="width: 16rem;">
-                <img src="https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F1026205392%2F0x0.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card" style="width: 16rem;">
-                <img src="https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F1026205392%2F0x0.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card" style="width: 16rem;">
-                <img src="https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F1026205392%2F0x0.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="row my-3">
-            <div class="col">
-              <div class="card" style="width: 16rem;">
-                <img src="https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F1026205392%2F0x0.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card" style="width: 16rem;">
-                <img src="https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F1026205392%2F0x0.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card" style="width: 16rem;">
-                <img src="https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters%3Aformat%28jpg%29/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F1026205392%2F0x0.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
+      <div class="column is-5" style="padding-bottom: 0; margin-bottom: 0;">
+        <div id="map" style="height: 100vh;"></div>
       </div>
 
     </div>
-
   </section>
 
-</body>
-</html>
+  <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCGxfxbrmi3CXefFbev0mtAHByzM7kF0sw&callback=initMap&libraries=&v=weekly"
+    async
+  ></script>
+{% endblock %}
